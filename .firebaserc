@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "booking-b0ec5": {
+      "hosting": {
+        "room-booking": [
+          "booking-b0ec5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "booking-b0ec5"
+  }
+}

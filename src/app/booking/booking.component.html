@@ -1,0 +1,88 @@
+<div class="container card p-4">
+    <h2>Start Your Booking</h2>
+    <form [formGroup]="guestForm" (ngSubmit)="onSubmit()">
+        <div>
+          <div class="form-group my-3">
+
+              <label for="firstName">First Name:</label>
+              <input class="form-control" type="text" id="firstName" formControlName="firstName" />
+              <div class="text-danger" *ngIf="guestForm.controls['firstName'].invalid && guestForm.controls['firstName'].touched">
+                  <div class="text-danger" *ngIf="guestForm.controls['firstName'].hasError('required')">First Name is required.</div>
+                </div>
+            </div>
+            <div>
+        </div>
+          <div class="form-group my-3">
+
+              <label for="lastName">Last Name:</label>
+              <input class="form-control" type="text" id="lastName" formControlName="lastName" />
+              <div class="text-danger" *ngIf="guestForm.controls['lastName'].invalid && guestForm.controls['lastName'].touched">
+                  <div class="text-danger" *ngIf="guestForm.controls['lastName'].hasError('required')">Last Name is required.</div>
+                </div>
+            </div>
+            <div>
+        </div>
+          <div class="form-group my-3">
+
+              <label for="city">City:</label>
+              <input class="form-control" type="text" id="city" formControlName="city" />
+              <div class="text-danger" *ngIf="guestForm.controls['city'].invalid && guestForm.controls['city'].touched">
+                  <div class="text-danger" *ngIf="guestForm.controls['city'].hasError('required')">City is required.</div>
+                </div>
+            </div>
+            <div>
+        </div>
+          <div class="form-group my-3">
+
+              <label for="country">Country:</label>
+              <input class="form-control" type="text" id="country" formControlName="country" />
+              <div class="text-danger" *ngIf="guestForm.controls['country'].invalid && guestForm.controls['country'].touched">
+                  <div class="text-danger" *ngIf="guestForm.controls['country'].hasError('required')">Country is required.</div>
+                </div>
+            </div>
+            <div>
+        </div>
+            <div class="form-group my-3">
+
+                <label for="country">Email:</label>
+                <input class="form-control" type="email" id="email" formControlName="email" />
+                <div class="text-danger" *ngIf="guestForm.controls['email'].invalid && guestForm.controls['email'].touched">
+                    <div class="text-danger" *ngIf="guestForm.controls['email'].hasError('required')">Email is required.</div>
+                </div>
+            </div>
+            <div>
+        </div>
+            <div class="form-group my-3">
+                <label for="country">Date of Birth :</label>
+                <input class="form-control" type="date" id="dob" formControlName="dob" />
+                <div class="text-danger" *ngIf="guestForm.controls['dob'].invalid && guestForm.controls['dob'].touched">
+                    <div class="text-danger" *ngIf="guestForm.controls['dob'].hasError('required')">Date of Birth is required.</div>
+                </div>
+            </div>
+            <div class="form-group my-3">
+                <label for="country">Passport Number :</label>
+                <input class="form-control" type="text" id="passportNumber" formControlName="passportNumber" />
+                <div class="text-danger" *ngIf="guestForm.controls['passportNumber'].invalid && guestForm.controls['passportNumber'].touched">
+                    <div class="text-danger" *ngIf="guestForm.controls['passportNumber'].hasError('required')">Passport Number is required.</div>
+                </div>
+            </div>
+            <div class="form-group my-3">
+                <label for="country">Passport Issue Date :</label>
+                <input class="form-control" type="date" id="passportIssueDate" formControlName="passportIssueDate" />
+                <div class="text-danger" *ngIf="guestForm.controls['passportIssueDate'].invalid && guestForm.controls['passportIssueDate'].touched">
+                    <div class="text-danger" *ngIf="guestForm.controls['passportIssueDate'].hasError('required')">Passport Issue Date is required.</div>
+                </div>
+            </div>
+            <div class="form-group my-3">
+                <label for="country">Passport Expiry Date :</label>
+                <input class="form-control" type="date" id="passportExpirydate" formControlName="passportExpirydate" />
+                <div class="text-danger" *ngIf="guestForm.controls['passportExpirydate'].invalid && guestForm.controls['passportExpirydate'].touched">
+                    <div class="text-danger" *ngIf="guestForm.controls['passportExpirydate'].hasError('required')">Passport is required required.</div>
+                    <!-- <div class="text-danger" *ngIf="guestForm.controls['passportExpirydate'].hasError('expiryDateValidator')">Passport Expiry Date is required.</div> -->
+
+                </div>
+            </div>
+        </div>
+      <button type="submit" class="btn btn-primary w-100 my-3">Next</button>
+    </form>
+  </div>

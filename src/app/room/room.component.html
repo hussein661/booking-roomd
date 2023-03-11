@@ -1,0 +1,150 @@
+<div class="container card p-4">
+  <h2>Choose your room</h2>
+  <div class="form-group">
+    <label>Select Room</label>
+    <select class="form-control" (change)="onRoomSelected($event)">
+      <option value="">--Select Room--</option>
+      <option *ngFor="let room of rooms" [value]="room">{{ room }}</option>
+    </select>
+  </div>
+  <div class="form-group" *ngIf="roomSelected">
+    <label>Number of Adults</label>
+    <div class="input-group">
+      <select class="form-control" [(ngModel)]="numAdults">
+        <option *ngFor="let num of adultOptions" [value]="num">
+          {{ num }}
+        </option>
+      </select>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="addAdult()"
+        >
+          Add More
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="removeAdult()"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+    <label>Number of Children</label>
+    <div class="input-group">
+      <select class="form-control" [(ngModel)]="numChildren">
+        <option *ngFor="let num of childOptions" [value]="num">
+          {{ num }}
+        </option>
+      </select>
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="addChild()"
+        >
+          Add More
+        </button>
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="removeChild()"
+        >
+          Remove
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h2>Booking Details</h2>
+    <p>Booking ID: {{ "booking.id" }}</p>
+    <!-- other booking details here -->
+    <button (click)="onAddExtra()">Add Extra</button>
+  </div>
+  <div *ngIf="showExtraForm">
+    <h2>Add Extra</h2>
+    <div class="form-group">
+      <label>Price</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="extra.price"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea
+        class="form-control"
+        [(ngModel)]="extra.description"
+        required
+      ></textarea>
+    </div>
+    <div class="form-group">
+      <label>Duration</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="extra.duration"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label>Condition</label>
+      <input
+        type="radio"
+        name="condition"
+        value="person"
+        [(ngModel)]="extra.condition"
+        required
+      />
+      Per Person
+      <input
+        type="radio"
+        name="condition"
+        value="booking"
+        [(ngModel)]="extra.condition"
+        required
+      />
+      Per Booking
+    </div>
+  </div>
+  <!-- other form fields here -->
+  <div class="form-group">
+    <label>Extra</label>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        [(ngModel)]="extraSelected"
+      />
+      <label class="form-check-label">Extra Option</label>
+    </div>
+  </div>
+  <form [formGroup]="bookingForm" >
+    <div class="form-group">
+      <label>Number of Days</label>
+      <select formControlName="numDays" class="form-control">
+        <option *ngFor="let days of dayOptions">{{ days }}</option>
+      </select>
+    </div>
+  </form>
+  <hr />
+  <div>
+    <h4>Room Price : 80 USD / day</h4>
+  </div>
+  <div>
+    <h5>total Price : {{bookingForm.value.numDays * 80 }} USD</h5>
+    <h5>Extra : {{extra.price }} USD</h5>
+    <h5>Discount  10% in high season : {{getDiscount() }} USD</h5>
+<hr />
+<h3 class="text-primary">Final Total : {{getPriceAfterDiscount()}} USD</h3>
+<hr />
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="onSubmit()">Book Now</button>
+  </div>
+</div>
